@@ -1,0 +1,16 @@
+.page-layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  &__children {
+    display: flex;
+    padding: 20.5rem 19.4rem;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .container {
+    max-width: 60%;
+  }
+}

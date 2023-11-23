@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import PageLayout from "./layout/page";
+import Transfer from "./widgets/transfer";
+import Container from "./layout/container";
+import Card from "./widgets/card";
+import USSD from "./widgets/ussd";
+import NQR from "./widgets/nqr";
+import Raven from "./widgets/raven";
 
-function App() {
+const App = () => {
+  const [selected, setSelected] = useState({
+    label: "",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <PageLayout onSelect={setSelected}>
+        {selected.label === "Bank Transfer" && <Transfer />}
+        {selected.label === "Card Payment" && <Card />}
+        {selected.label === "USSD" && <USSD />}
+        {selected.label === "NQR Payment" && <NQR />}
+        {selected.label === "Raven Pay" && <Raven />}
+      </PageLayout>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,378 @@
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_extra_light_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_extra_light_italic-webfont.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_extra_light-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_extra_light-webfont.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_light_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_light_italic-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_light-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_medium_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_medium_italic-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_medium-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_medium-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_regular_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_regular_italic-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_regular-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_semibold_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_semibold_italic-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_semibold-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_semibold-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_thin_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_thin_italic-webfont.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_thin-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_thin-webfont.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_black_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_black_italic-webfont.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_black-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_black-webfont.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_bold_italic-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_bold_italic-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "br_firma";
+  src: url("./fonts/br_firma_bold-webfont.woff2") format("woff2"),
+    url("./fonts/br_firma_bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Root colors
+:root {
+  // base starts here ----
+  --base-white: #ffffff;
+  --base-black: #020202;
+  --base-background-white: #f9f9f9;
+  --base-background-black: #676767;
+
+  // border color start here ----
+  --border-green: #0b8376;
+  --border-grey-dark: #676767;
+  --border-grey-light: #cccccc;
+  --border-light: #f7f8f7;
+
+  // primary start here ------
+  --primary-green: #0b8376;
+  --primary-deep-green: #014345;
+  --primary-blue: #476885;
+  --primary-orange: #ea872d;
+  --primary-purple: #755ae2;
+  --primary-black: #020202;
+  --primary-grey-shade: #e5e6e6;
+
+  // accent starts here -------
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+  font-family: "br_firma", sans-serif;
+}
+
+html {
+  font-size: 55.5% !important;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 75em) {
+    font-size: 52% !important;
+  }
+}
+
+body {
+  font-size: 1.4rem;
+  font-family: "br_firma", sans-serif;
+  font-weight: 400;
+  /* overflow-x: hidden !important; */
+  position: relative;
+  width: 100vw;
+  overscroll-behavior: none;
+  //   color: var(--text-color);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  //   background-color: red;
+  color: rgba(27, 27, 27, 1);
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .form-group__deep-green-light .wrap .label-calendar .img-box .img {
+    opacity: 0.4;
+  }
+
+  .animate-move-up-class {
+    animation: moveUpAnime 500ms backwards ease-in-out;
+  }
+
+  @keyframes moveUpAnime {
+    0% {
+      transform: translateY(2%);
+      opacity: 0.7;
+    }
+
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  // @media only screen and (min-width: 105em) {
+  //   width: 160rem !important;
+  // }
+}
+
+.grey-white-color {
+  color: #676767;
+}
+
+div.css-1io7ftr-option {
+  background-color: #014345;
+}
+
+.form {
+  overflow: hidden;
+  padding-bottom: 2.5rem;
+}
+
+.atlas-payment-container {
+  .form {
+    overflow: hidden;
+    padding-bottom: 2.5rem !important;
+  }
+}
+.transaction__table {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// styling for drop downs
+.more-wrap {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  gap: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  box-shadow: 0px 24px 48px -8px rgba(51, 51, 51, 0.04),
+    0px 48px 64px -36px rgba(51, 51, 51, 0.08);
+  border-radius: 8px;
+  display: flex;
+  top: 4rem;
+  width: max-content;
+  right: 4rem;
+  z-index: 111;
+  transform-origin: top right;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+
+  &.show-drop {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
+  .more_item {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem;
+    gap: 1rem;
+    width: 100%;
+
+    &:not(:last-child) {
+      border-bottom: 0.4px solid #e5e6e6;
+    }
+    figure {
+      display: grid;
+      place-items: center;
+      height: 2rem;
+      width: 2rem;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.global-search,
+.input-group__search,
+.top-bar__search {
+  > * {
+    &:active {
+      border: none !important;
+      box-shadow: none !important;
+      color: #b3b3b3;
+    }
+    &:focus {
+      border: unset !important;
+      box-shadow: none !important;
+    }
+    &:hover {
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+  .input-group {
+    border: none !important;
+    box-shadow: none !important;
+
+    &:active {
+      border: none !important;
+      box-shadow: none !important;
+    }
+    &:focus {
+      border: none !important;
+      box-shadow: none !important;
+    }
+    &:hover {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .form-input {
+      &:active {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      &:focus:valid {
+        border: unset !important;
+        box-shadow: none !important;
+      }
+      &:hover {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    .search-box .img-box {
+      opacity: 0.5;
+    }
+  }
+}
+.form-group {
+  .input-submit {
+    @media only screen and (max-width: 42em) {
+      height: 5rem !important;
+    }
+  }
+  .flatpickr-input {
+    height: 5rem !important;
+  }
+}
+
+.non-desktop {
+  display: none;
+}
+
+.non-mobile {
+  display: flex;
+  visibility: unset;
+}
