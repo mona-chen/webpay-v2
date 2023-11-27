@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "@ravenpay/raven-bank-ui";
 import api from "../helpers/axios";
-import { AppState } from "../@types/AppState";
+import { AppState } from "../@types/appState";
 
 export const getPaymentConfig = createAsyncThunk(
   "/get_payment_config",
