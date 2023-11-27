@@ -34,8 +34,8 @@ const TransactionStatus = ({ status = "pending" }: { status: string }) => {
               <h6>Payment Successful</h6>
               <p>
                 You payment of {symbol(conf?.currency.toLowerCase())}
-                {formatNumWithComma(conf?.amount, "ngn")}
-                have been sent successfully to Notbl.ank Studio.
+                {formatNumWithComma(conf?.amount, "ngn")} have been sent
+                successfully to {config?.customer_email}
               </p>
             </div>
           ))}
