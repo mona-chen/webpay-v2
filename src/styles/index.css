@@ -324,4 +324,8 @@ div.css-1io7ftr-option {
 .non-mobile {
   display: flex;
   visibility: unset;
+}
+
+iframe {
+  border: none !important;
 }/*# sourceMappingURL=index.css.map */

@@ -8,6 +8,10 @@
     padding: 20.5rem 19.4rem;
     justify-content: center;
     width: 80%;
+
+    &.has-external-modal {
+      // padding: 0;
+    }
   }
 
   .container {

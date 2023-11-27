@@ -1,48 +1,59 @@
 import React, { useState } from "react";
 import "./styles/index.css";
 import { icons } from "../../assets/icons";
-import {
-  RavenButton,
-  RavenCheckBox,
-  RavenInputField,
-} from "@ravenpay/raven-bank-ui";
 import Container from "../../layout/container";
 import Copy from "../../components/Copy";
-import TransactionStatus from "../../components/TransactionStatus";
-const Transfer = () => {
-  const [stage, setStage] = useState(0);
+import Countdown from "../../helpers/coutdown";
+import { setStatus } from "../../redux/payment";
+import { useAppDispatch } from "../../redux/store";
+const Transfer = (props: any) => {
+  const { bank } = props;
+  const [count, setCount] = useState("");
 
+  const bankCountDown = () => {
+    let min = count?.split(":")[0];
+    let sec = count?.split(":")[1];
+
+    return { min, sec };
+  };
+
+  const dispatch = useAppDispatch();
   return (
     <Container
-      switchMethod={stage === 1}
+      title="Bank Transfer"
       className="transfer animate-move-up-class"
       onClick={() => {
-        stage !== 1 && setStage(stage + 1);
+        dispatch(setStatus("pending" as never));
       }}
     >
-      {stage === 0 && (
-        <div className="transfer__payment-details">
-          <div className="transfer__payment-details--account-no">
-            <span>
-              <p>Alex Oyebade • Raven Bank</p>
-              <h5>3028422066</h5>
-            </span>
-
-            <Copy />
-          </div>
-
-          <div className="transfer__payment-details--note">
-            <figure>{icons.note_info}</figure>
+      <div className="transfer__payment-details">
+        <div className="transfer__payment-details--account-no">
+          <span>
             <p>
-              Please utilize this account exclusively for the current
-              transaction; note that this account will also expire in{" "}
-              <b>30 minutes</b>.
+              {bank?.account_name || "--"} • {bank?.bank || "--"}
             </p>
-          </div>
-        </div>
-      )}
+            <h5>{bank?.account_number || "--"}</h5>
+          </span>
 
-      {stage === 1 && <TransactionStatus status="success" />}
+          <Copy item={bank?.account_number} />
+        </div>
+
+        <div className="transfer__payment-details--note">
+          <figure>{icons.note_info}</figure>
+          <p>
+            Please utilize this account exclusively for the current transaction;
+            note that this account will also expire in{" "}
+            <b>
+              {bankCountDown().min} minutes {bankCountDown().sec} minutes
+            </b>
+            .
+          </p>
+        </div>
+      </div>
+
+      <div style={{ display: "none" }}>
+        <Countdown countdownTime={840} count={(d: string) => setCount(d)} />
+      </div>
     </Container>
   );
 };

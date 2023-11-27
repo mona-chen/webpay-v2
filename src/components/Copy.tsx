@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { icons } from "../assets/icons";
 import { FaCheckCircle } from "react-icons/fa";
 import "./styles/index.css";
-const Copy = () => {
+const Copy = ({ item }: { item?: string }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async (e: any) => {
@@ -17,7 +17,9 @@ const Copy = () => {
     <>
       <span
         className={`copy_button ${copied ? "wobble" : ""}`}
-        onClick={handleCopy}
+        onClick={() => {
+          handleCopy(item);
+        }}
       >
         <figure className="copy_icon">
           {copied ? <FaCheckCircle color="#0B8376" /> : icons.copy}

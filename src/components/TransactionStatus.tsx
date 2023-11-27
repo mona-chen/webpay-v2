@@ -2,8 +2,16 @@ import React from "react";
 import spinner from "../assets/spinner.png";
 import "./styles/index.css";
 import { icons } from "../assets/icons";
+import { RootState } from "../redux/store";
+import { useSelector } from "react-redux";
+import { formatNumWithComma, symbol } from "../helpers/Helper";
 
 const TransactionStatus = ({ status = "pending" }: { status: string }) => {
+  const { config, ussd_code } = useSelector(
+    (state: RootState) => state.payment
+  );
+
+  const conf: any = config;
   return (
     <>
       <div className="transaction-status">
@@ -17,17 +25,20 @@ const TransactionStatus = ({ status = "pending" }: { status: string }) => {
           </>
         )}
 
-        {status === "success" && (
-          <div className="transaction-status__success">
-            <figure>{icons.success}</figure>
+        {status === "success" ||
+          status === "successful" ||
+          (status === "paid" && (
+            <div className="transaction-status__success">
+              <figure>{icons.success}</figure>
 
-            <h6>Payment Successful</h6>
-            <p>
-              You transfer of N86,320.00 have been sent successfully to
-              Notbl.ank Studio.
-            </p>
-          </div>
-        )}
+              <h6>Payment Successful</h6>
+              <p>
+                You payment of {symbol(conf?.currency.toLowerCase())}
+                {formatNumWithComma(conf?.amount, "ngn")}
+                have been sent successfully to Notbl.ank Studio.
+              </p>
+            </div>
+          ))}
 
         {status === "failed" && (
           <div className="transaction-status__failed">

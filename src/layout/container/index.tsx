@@ -1,7 +1,12 @@
 import { RavenButton } from "@ravenpay/raven-bank-ui";
-import React, { MouseEventHandler, ReactNode } from "react";
+import React, { MouseEventHandler, ReactNode, useState } from "react";
 import { icons } from "../../assets/icons";
 import "./style/index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { formatNumWithComma, symbol } from "../../helpers/Helper";
+import TransactionStatus from "../../components/TransactionStatus";
+import { setStatus } from "../../redux/payment";
 
 const Container = ({
   children,
@@ -10,18 +15,24 @@ const Container = ({
   button = true,
   recipient,
   amount,
+  loading,
   merchant,
   className = "",
+  btnLabel = "",
+  btnDisabled = false,
   switchMethod,
 }: {
   children: ReactNode;
-  onClick?: MouseEventHandler;
+  onClick?: Function;
   title?: string;
   amount?: number;
   recipient?: string;
   button?: boolean;
+  btnDisabled?: boolean;
   merchant?: string;
   className?: string;
+  btnLabel?: string;
+  loading?: boolean;
   switchMethod?: boolean;
 }) => {
   const goBackHome = () => {
@@ -31,6 +42,12 @@ const Container = ({
       page.classList.remove("show-mobile-contents");
     }
   };
+
+  const { config, trx_status }: any = useSelector(
+    (state: RootState) => state.payment
+  );
+
+  const dispatch = useDispatch();
   return (
     <div className={`container ${className}`}>
       <div className="container-content">
@@ -46,27 +63,47 @@ const Container = ({
             </figure>
             <span>
               <small>Payment To.</small>
-              <p>{merchant || "Notbl.ank Studios"}</p>
+              <p>{config?.customer_email || config?.email || "--"}</p>
             </span>
           </div>
 
           <div className="payment-info__right">
-            <p>N{amount || 0.0}</p>
-            <small>{recipient || "Mr Somebody"}</small>
+            <p>
+              {symbol(config?.currency?.toLowerCase()) +
+                "" +
+                formatNumWithComma(config?.amount, "ngn") || 0.0}
+            </p>
+            {/* <small>{recipient || "Mr Somebody"}</small> */}
           </div>
         </div>
-        {children}
+        {trx_status?.length < 4 ? (
+          children
+        ) : (
+          <TransactionStatus status={trx_status} />
+        )}
 
-        {button && (
+        {trx_status !== "paid" && (
           <div
             className={`container-content__button ${
-              switchMethod ? "switch-method-btn" : ""
+              trx_status?.length > 4 ? "switch-method-btn" : ""
             }`}
           >
             <RavenButton
-              onClick={onClick as () => void}
+              disabled={btnDisabled}
+              loading={loading}
+              onClick={() => {
+                trx_status?.length > 4
+                  ? dispatch(setStatus("d" as never))
+                  : onClick && onClick();
+              }}
               color="deep-green-dark"
-              label={switchMethod ? "Change Payment Method" : "I have paid"}
+              label={
+                btnLabel
+                  ? btnLabel
+                  : trx_status?.length > 4
+                  ? "Change Payment Method"
+                  : "I have paid"
+              }
             />
           </div>
         )}
