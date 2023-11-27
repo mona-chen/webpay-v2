@@ -2,6 +2,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "@ravenpay/raven-bank-ui";
 import api from "../helpers/axios";
+import { AppState } from "../@types/AppState";
 
 export const getPaymentConfig = createAsyncThunk(
   "/get_payment_config",
@@ -244,26 +245,29 @@ export const initRavenPay = createAsyncThunk(
   }
 );
 
+const initialState: AppState = {
+  config: {},
+  loading: false,
+  isAuth: false,
+  isTransferLoading: false,
+  transferStatus: {},
+  ussd_code: {},
+  trx_status: "i",
+  card_transaction_status: {},
+  isUssdLoading: false,
+  showBlusaltModal: false,
+  ussd_details: {},
+  card_ref: null,
+  card_trx: [],
+  cardIframeUrl: "",
+  raven_pay: {},
+  bank: null,
+};
+
 export const payment = createSlice({
   name: "payment",
-  initialState: {
-    config: {},
-    loading: false,
-    isAuth: false,
-    isTransferLoading: false,
-    transferStatus: {},
-    ussd_code: {},
-    trx_status: "i",
-    card_transaction_status: {},
-    isUssdLoading: false,
-    showBlusaltModal: false,
-    ussd_details: {},
-    card_ref: null,
-    card_trx: [],
-    cardIframeUrl: "",
-    raven_pay: {},
-    bank: null,
-  },
+  initialState,
+
   reducers: {
     setConfig: (state: any, action: any) => {
       state.config = action.payload;

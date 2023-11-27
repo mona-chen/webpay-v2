@@ -57,10 +57,29 @@ const App = () => {
   } = useSelector((state: RootState) => state.payment);
 
   const [success, setSuccess] = useState(false);
+  const [callbackUrl, setCallbackUrl] = useState("");
+
+  let redirectUrl = config?.redirect_url;
+
+  // detect if redirectUrl has a query string
+  function isQueryString(redirectUrl?: string) {
+    if (redirectUrl?.includes("?")) {
+      redirectUrl = redirectUrl + "&";
+    } else {
+      redirectUrl = redirectUrl + "?";
+    }
+    // Now you can use the modified redirectUrl as needed
+    return redirectUrl;
+  }
 
   let int: any;
   let cardint: any;
   const card_status: any = card_transaction_status;
+
+  //enable cross-platform communication with sdks and plugins
+  function postMessage(type: string, message: any) {
+    window.parent.postMessage({ type: type, message: message }, "*");
+  }
 
   useEffect(() => {
     getConfig();
@@ -70,6 +89,15 @@ const App = () => {
   async function getBank() {
     await dispatch(getBankAccount(trx));
   }
+
+  useEffect(() => {
+    if (config?.redirect_url !== null)
+      setCallbackUrl(
+        `${isQueryString(config?.redirect_url)}trx_ref=${
+          config?.trx_ref
+        }&merchant_ref=${config?.merchant_ref}&status=${config?.status}`
+      );
+  }, [config]);
 
   function checkTransferStatus() {
     int = setInterval(async () => {
@@ -106,6 +134,9 @@ const App = () => {
       trx_status === "successful"
     ) {
       clearInterval(int);
+      postMessage("onSuccess", config);
+    } else {
+      postMessage("onLoad", config);
     }
   }, [trx_status]);
 

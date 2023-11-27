@@ -1,0 +1,38 @@
+export type ConfigState = {
+  id?: number;
+  email?: string;
+  amount?: number;
+  payment_methods?: ("card" | "raven")[];
+  customer_email?: string;
+  bank?: null | string;
+  redirect_url?: null | string;
+  description?: string;
+  trx_ref?: string;
+  merchant_ref?: string;
+  currency?: string;
+  is_paid?: number;
+  payment_method_used?: null | string;
+  account_number?: null | string;
+  account_name?: null | string;
+  account_generated?: number;
+  ussd_reference?: null | string;
+  raven_pay_ref?: null | string;
+  raven_paid_from?: null | string;
+  raven_paid_to?: null | string;
+  raven_reference?: null | string;
+  ip_address?: string;
+  status?: string;
+  meta_data?: {
+    email?: string;
+    user_id?: number;
+  };
+  confirmed_at?: null | string;
+  created_at?: string;
+  updated_at?: string;
+  deleted_at?: null | string;
+  payment_method_used_reference?: null | string;
+  webhook_sent?: number;
+  notify_customer?: number;
+  notify_merchant?: number;
+  link?: string;
+};
