@@ -57,7 +57,7 @@ const Container = ({
           <div className="payment-info__left">
             <figure>
               <img
-                src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._RI_TTW_SX720_FMjpg_.jpg"
+                src="https://play-lh.googleusercontent.com/HujVA5gwJyguTL8JNa-UKKyQP-I5Rf6skXduh8nLhxjzEoJZNEIKKbTTym7TQntm8lJ9"
                 alt=""
               />
             </figure>

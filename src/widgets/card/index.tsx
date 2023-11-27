@@ -311,6 +311,7 @@ const Card = ({ config, trx }: any) => {
                 color="green-light"
                 name="holder_name"
                 id="holder_name"
+                placeholder="e.g Dumebi Akpan"
                 label="Card Holder Name *"
                 type="text"
                 onChange={(e: any) => {

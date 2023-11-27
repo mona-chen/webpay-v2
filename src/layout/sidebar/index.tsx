@@ -81,7 +81,7 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
         <p>More Options</p>
       </div>
 
-      <div className="sidebar__footer non-mobile">
+      <div className="sidebar__footer">
         <span>
           <p>Powered by</p>
           <figure>{icons.raven_wordmark}</figure>
