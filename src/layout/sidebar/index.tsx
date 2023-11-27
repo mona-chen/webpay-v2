@@ -8,7 +8,7 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
     {
       icon: icons.bank,
       label: "Bank Transfer",
-      value: "bank",
+      value: "bank_transfer",
     },
     {
       icon: icons.card_mobile,
