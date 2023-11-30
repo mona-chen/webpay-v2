@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API = "https://integrations.getravenbank.com/v1";
-// const API = "https://baas.getraventest.com";
+// const API = "https://integrations.getravenbank.com/v1";
+const API = "https://baas.getraventest.com";
 // const API = 'https://adee-156-0-250-54.ngrok-free.app'
 
 /** base url to make request to the BE end point */
