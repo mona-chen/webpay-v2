@@ -1,4 +1,10 @@
-import { RavenCheckBox, RavenInputField, toast } from "@ravenpay/raven-bank-ui";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {
+  RavenCheckBox,
+  RavenInputField,
+  RavenModal,
+  toast,
+} from "@ravenpay/raven-bank-ui";
 import React, { useCallback, useEffect, useState } from "react";
 import "./style/index.css";
 import Container from "../../layout/container";
@@ -15,6 +21,7 @@ import {
 } from "../../redux/payment";
 import { useSelector } from "react-redux";
 import { generateReference } from "../../helpers/Helper";
+import ErrorModal from "../../components/modal/ErrorModal";
 
 const Card = ({ config, trx }: any) => {
   const [cvv, setCvv] = useState("");
@@ -50,10 +57,10 @@ const Card = ({ config, trx }: any) => {
   const dispatch = useAppDispatch();
   let cardint: any;
   const card_status: any = card_transaction_status;
+  const has_keys = Object.keys(config);
 
   function handleCardNumberChange(event: any) {
     const rawValue = event.target.value.replace(/\s/g, "");
-    const maskedValue = rawValue.replace(/(\d{1,4})/g, "$1 ").trim();
 
     // Detect card type
     if (/^4/.test(rawValue)) {
@@ -115,7 +122,7 @@ const Card = ({ config, trx }: any) => {
       dispatch(setStatus("successful" as never));
     }
 
-    if (card_status?.data?.status == "failed") {
+    if (card_status?.data?.status === "failed") {
       dispatch(setStatus("failed" as never));
       setExternalView(false);
     }
@@ -276,8 +283,6 @@ const Card = ({ config, trx }: any) => {
     if (event.origin !== "http://www.otherdomain.com/") return;
     // this check is neccessary
     // because the `message` handler accepts messages from any URI
-
-    console.log("received window response:  ", event.data);
   }
 
   return (
@@ -311,6 +316,7 @@ const Card = ({ config, trx }: any) => {
                 color="green-light"
                 name="holder_name"
                 id="holder_name"
+                placeholder="e.g Dumebi Akpan"
                 label="Card Holder Name *"
                 type="text"
                 onChange={(e: any) => {
@@ -319,7 +325,7 @@ const Card = ({ config, trx }: any) => {
               />
             </div>
           )}
-          <div className="card__input-group">
+          <div className="card__input-group exp-cvv">
             <RavenInputField
               onChange={(e: string) => {
                 setExp(e);

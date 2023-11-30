@@ -48,41 +48,48 @@ const Container = ({
   );
 
   const dispatch = useDispatch();
+  const has_keys = Object.keys(config);
+
   return (
     <div className={`container ${className}`}>
       <div className="container-content">
-        <h6 className="container-content__title">{title || "Method Name"}</h6>
+        {has_keys.length !== 0 && (
+          <h6 className="container-content__title">{title || "Method Name"}</h6>
+        )}
+        {has_keys.length !== 0 && (
+          <div className="container-content__payment-info">
+            <div className="payment-info__left">
+              <figure>
+                <img
+                  src="https://play-lh.googleusercontent.com/HujVA5gwJyguTL8JNa-UKKyQP-I5Rf6skXduh8nLhxjzEoJZNEIKKbTTym7TQntm8lJ9"
+                  alt=""
+                />
+              </figure>
+              <span>
+                <small>Payment To.</small>
+                <p>{config?.customer_email || config?.email || "--"}</p>
+              </span>
+            </div>
 
-        <div className="container-content__payment-info">
-          <div className="payment-info__left">
-            <figure>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._RI_TTW_SX720_FMjpg_.jpg"
-                alt=""
-              />
-            </figure>
-            <span>
-              <small>Payment To.</small>
-              <p>{config?.customer_email || config?.email || "--"}</p>
-            </span>
+            <div className="payment-info__right">
+              <p>
+                {symbol(config?.currency?.toLowerCase()) +
+                  "" +
+                  formatNumWithComma(config?.amount, "ngn") || 0.0}
+              </p>
+              {/* <small>{recipient || "Mr Somebody"}</small> */}
+            </div>
           </div>
-
-          <div className="payment-info__right">
-            <p>
-              {symbol(config?.currency?.toLowerCase()) +
-                "" +
-                formatNumWithComma(config?.amount, "ngn") || 0.0}
-            </p>
-            {/* <small>{recipient || "Mr Somebody"}</small> */}
-          </div>
-        </div>
-        {trx_status?.length < 4 ? (
+        )}
+        {trx_status?.length < 4 && has_keys.length !== 0 ? (
           children
+        ) : has_keys.length === 0 ? (
+          <TransactionStatus status={loading ? "loading" : "noref"} />
         ) : (
           <TransactionStatus status={trx_status} />
         )}
 
-        {trx_status !== "paid" && (
+        {trx_status !== "paid" && has_keys.length !== 0 && (
           <div
             className={`container-content__button ${
               trx_status?.length > 4 ? "switch-method-btn" : ""

@@ -16,7 +16,7 @@ const Copy = ({ item }: { item?: string }) => {
   return (
     <>
       <span
-        className={`copy_button ${copied ? "wobble" : ""}`}
+        className={`copy_button`}
         onClick={() => {
           handleCopy(item);
         }}

@@ -149,6 +149,13 @@
   gap: 1.6rem;
   margin-top: 1.6rem;
 }
+.card__input-group.exp-cvv {
+  width: 100%;
+  display: flex;
+}
+.card__input-group.exp-cvv input {
+  width: 100%;
+}
 .card__save-card {
   display: flex;
   align-items: center;

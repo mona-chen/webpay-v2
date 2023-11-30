@@ -25,6 +25,16 @@ const TransactionStatus = ({ status = "pending" }: { status: string }) => {
           </>
         )}
 
+        {status === "loading" && (
+          <>
+            <figure className="spinner">
+              <img src={spinner} alt="" />
+            </figure>
+
+            <p>Fetching Payment Info...</p>
+          </>
+        )}
+
         {status === "success" ||
           status === "successful" ||
           (status === "paid" && (
@@ -34,8 +44,8 @@ const TransactionStatus = ({ status = "pending" }: { status: string }) => {
               <h6>Payment Successful</h6>
               <p>
                 You payment of {symbol(conf?.currency.toLowerCase())}
-                {formatNumWithComma(conf?.amount, "ngn")}
-                have been sent successfully to Notbl.ank Studio.
+                {formatNumWithComma(conf?.amount, "ngn")} have been sent
+                successfully to {config?.customer_email}
               </p>
             </div>
           ))}
@@ -48,6 +58,18 @@ const TransactionStatus = ({ status = "pending" }: { status: string }) => {
             <p>
               Seems the details entered is not correct, change the payment
               method and retry.
+            </p>
+          </div>
+        )}
+
+        {status === "noref" && (
+          <div className="transaction-status__failed">
+            <figure>{icons.failed}</figure>
+
+            <h6>Invalid Payment Reference</h6>
+            <p>
+              Your payment reference or link seems invalid, kindly double check
+              and try again.
             </p>
           </div>
         )}

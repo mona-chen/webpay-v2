@@ -262,6 +262,7 @@ const initialState: AppState = {
   cardIframeUrl: "",
   raven_pay: {},
   bank: null,
+  cancelled: false,
 };
 
 export const payment = createSlice({
@@ -320,6 +321,10 @@ export const payment = createSlice({
       state.cardIframeUrl = action.payload;
       state.isAuth = false;
     },
+    onCancel: (state: any, action: any) => {
+      state.cancelled = action.payload;
+      state.isAuth = false;
+    },
   },
 
   extraReducers: (builder) => {
@@ -372,6 +377,7 @@ export const {
   setTransferStatus,
   setStatus,
   setIframeUrl,
+  onCancel,
 } = payment.actions;
 
 export default payment.reducer;
