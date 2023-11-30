@@ -53,7 +53,9 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
       </div>
 
       <div className="sidebar__title-mobile non-desktop">
-        <h6>Select your preferred payment method?</h6>
+        <h6>
+          Select your preferred <br /> payment method?
+        </h6>
       </div>
 
       {items
@@ -77,9 +79,9 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
           );
         })}
 
-      <div className="sidebar__more-options non-mobile">
+      {/* <div className="sidebar__more-options non-mobile">
         <p>More Options</p>
-      </div>
+      </div> */}
 
       <div className="sidebar__footer">
         <span>

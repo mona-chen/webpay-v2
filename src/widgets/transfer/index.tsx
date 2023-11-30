@@ -21,6 +21,7 @@ const Transfer = (props: any) => {
   return (
     <Container
       title="Bank Transfer"
+      loading={props.loading}
       className="transfer animate-move-up-class"
       onClick={() => {
         dispatch(setStatus("pending" as never));

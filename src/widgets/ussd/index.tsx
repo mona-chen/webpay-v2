@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import { RavenInputField } from "@ravenpay/raven-bank-ui";
 import React, { useEffect, useState } from "react";
 import { icons } from "../../assets/icons";
@@ -63,6 +64,7 @@ const USSD = ({ ussd_config }: { ussd_config: any }) => {
             selectOption={formatSelectOption(ussd_details?.bank_list)}
           />
         </div>
+        {/* <BpQRCode contents="fdfd" key={"1"} /> */}
         <div className="ussd__payment-details">
           <div className="ussd__payment-details--account-no">
             <span>
