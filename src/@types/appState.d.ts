@@ -17,4 +17,5 @@ export type AppState = {
   cardIframeUrl: string;
   raven_pay: any;
   bank: null | string;
+  cancelled: boolean;
 };

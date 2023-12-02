@@ -6,16 +6,15 @@ import { RootState } from "../../redux/store";
 const Sidebar = ({ onSelect }: { onSelect: Function }) => {
   const items = [
     {
-      icon: icons.bank,
-      label: "Bank Transfer",
-      value: "bank_transfer",
-    },
-    {
       icon: icons.card_mobile,
       label: "Card Payment",
       value: "card",
     },
-
+    {
+      icon: icons.bank,
+      label: "Bank Transfer",
+      value: "bank_transfer",
+    },
     {
       icon: icons.ussd,
       label: "USSD",
@@ -33,7 +32,7 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
     },
   ];
 
-  const [activeItem, setActiveItem] = useState("Bank Transfer");
+  const [activeItem, setActiveItem] = useState("Card Payment");
   const { config } = useSelector((state: RootState) => state.payment);
 
   const switchContentMobile = () => {
@@ -53,7 +52,9 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
       </div>
 
       <div className="sidebar__title-mobile non-desktop">
-        <h6>Select your preferred payment method?</h6>
+        <h6>
+          Select your preferred <br /> payment method?
+        </h6>
       </div>
 
       {items
@@ -77,9 +78,9 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
           );
         })}
 
-      <div className="sidebar__more-options non-mobile">
+      {/* <div className="sidebar__more-options non-mobile">
         <p>More Options</p>
-      </div>
+      </div> */}
 
       <div className="sidebar__footer">
         <span>
