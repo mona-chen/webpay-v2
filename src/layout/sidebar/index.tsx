@@ -6,16 +6,15 @@ import { RootState } from "../../redux/store";
 const Sidebar = ({ onSelect }: { onSelect: Function }) => {
   const items = [
     {
-      icon: icons.bank,
-      label: "Bank Transfer",
-      value: "bank_transfer",
-    },
-    {
       icon: icons.card_mobile,
       label: "Card Payment",
       value: "card",
     },
-
+    {
+      icon: icons.bank,
+      label: "Bank Transfer",
+      value: "bank_transfer",
+    },
     {
       icon: icons.ussd,
       label: "USSD",
@@ -33,7 +32,7 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
     },
   ];
 
-  const [activeItem, setActiveItem] = useState("Bank Transfer");
+  const [activeItem, setActiveItem] = useState("Card Payment");
   const { config } = useSelector((state: RootState) => state.payment);
 
   const switchContentMobile = () => {

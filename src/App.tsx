@@ -23,8 +23,8 @@ import ErrorModal from "./components/modal/ErrorModal";
 
 const App = () => {
   const [selected, setSelected] = useState({
-    label: "Bank Transfer",
-    value: "bank",
+    label: "Card Payment",
+    value: "card",
   });
 
   // retrieve plugin based configurations
@@ -177,11 +177,11 @@ const App = () => {
   return (
     <div>
       <PageLayout onSelect={setSelected}>
-        {selected.label === "Bank Transfer" && (
-          <Transfer loading={loading} bank={bank} />
-        )}
         {selected.label === "Card Payment" && (
           <Card trx={trx} config={config} />
+        )}
+        {selected.label === "Bank Transfer" && (
+          <Transfer loading={loading} bank={bank} />
         )}
         {selected.label === "USSD" && <USSD ussd_config={ussd_code} />}
         {selected.label === "NQR Payment" && <NQR />}
