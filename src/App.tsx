@@ -100,6 +100,7 @@ const App = () => {
   }, [config]);
 
   function checkTransferStatus() {
+    clearInterval(int);
     if (has_keys.length !== 0) {
       int = setInterval(async () => {
         let call = await dispatch(confirmTransfer(trx));
@@ -123,7 +124,9 @@ const App = () => {
     }
 
     if (selected.label === "Bank Transfer" && !success) checkTransferStatus();
-  }, [selected.label === "Bank Transfer"]);
+    if (selected.label === "USSD" && !success) checkTransferStatus();
+    if (selected.label === "Raven Pay" && !success) checkTransferStatus();
+  }, [selected.label]);
 
   useEffect(() => {
     if (selected.label === "Raven Pay" && !success) dispatch(initRavenPay(trx));
@@ -170,8 +173,8 @@ const App = () => {
   setBottomPadding();
   window.addEventListener("resize", setBottomPadding);
 
-  const navigate = (e: string) => {
-    window.location.href = e;
+  const navigate = (e: string | URL) => {
+    window?.top ? window.top.location.replace(e) : window.location.replace(e);
   };
 
   return (

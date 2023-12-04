@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style/index.css";
 import { icons } from "../../assets/icons";
 import { useSelector } from "react-redux";
@@ -33,7 +33,7 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
   ];
 
   const [activeItem, setActiveItem] = useState("Card Payment");
-  const { config } = useSelector((state: RootState) => state.payment);
+  const { config, loading } = useSelector((state: RootState) => state.payment);
 
   const switchContentMobile = () => {
     const page = document.querySelector(".page-layout");
@@ -44,6 +44,17 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
   };
 
   let prefferedGateway: any = config;
+
+  useEffect(() => {
+    console.log(config);
+    if (!loading && config && config?.trx_ref !== "undefined") {
+      const page = document.querySelector(".page-layout");
+
+      if (page) {
+        page.classList.add("show-mobile-contents");
+      }
+    }
+  }, [config]);
 
   return (
     <div className="sidebar">

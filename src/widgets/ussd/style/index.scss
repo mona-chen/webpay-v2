@@ -82,6 +82,13 @@
     }
   }
 
+  .spinner {
+    width: 6rem;
+    height: 6rem;
+    animation: spin 1s linear infinite;
+    margin-bottom: 2rem;
+  }
+
   &__payment-details {
     display: flex;
     // width: 47.1rem;
@@ -200,5 +207,25 @@
     width: 100%;
     display: grid;
     place-items: center;
+  }
+}
+
+.loader-container {
+  display: flex;
+  width: 100%;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  .spinner {
+    width: 6rem;
+    height: 6rem;
+    animation: spin 1s linear infinite;
+    margin-bottom: 2rem;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

@@ -1,0 +1,58 @@
+@import "../_breakpoints.scss";
+
+@include sm() {
+  .modal-wrap.show-modal .page-layout .sidebar {
+    // background-color: red;
+
+    padding: 11.8rem 4rem;
+    padding-right: 0;
+    width: 40%;
+  }
+
+  .page-layout .container {
+    max-width: 90%;
+  }
+
+  .sidebar__footer {
+    width: max-content;
+    left: 2.2rem;
+  }
+}
+
+@include md() {
+  .modal-wrap.show-modal .page-layout .sidebar {
+    // background-color: red;
+
+    padding: 11.8rem 4rem;
+    padding-right: 0;
+    width: 30%;
+  }
+
+  .page-layout .container {
+    max-width: 90%;
+  }
+
+  .sidebar__footer {
+    width: max-content;
+    left: 2.2rem;
+  }
+}
+
+@include lg() {
+  .modal-wrap.show-modal .page-layout .sidebar {
+    // background-color: red;
+
+    padding: 11.8rem 4rem;
+    padding-right: 0;
+    // width: 40%;
+  }
+
+  .page-layout .container {
+    max-width: 70%;
+  }
+
+  .sidebar__footer {
+    width: max-content;
+    // left: 2.2rem;
+  }
+}

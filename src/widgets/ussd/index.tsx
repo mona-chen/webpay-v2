@@ -2,6 +2,7 @@
 import { RavenInputField } from "@ravenpay/raven-bank-ui";
 import React, { useEffect, useState } from "react";
 import { icons } from "../../assets/icons";
+import spinner from "../../assets/spinner.png";
 import Copy from "../../components/Copy";
 import Container from "../../layout/container";
 import "./style/index.css";
@@ -14,11 +15,11 @@ import {
 import { RootState, useAppDispatch } from "../../redux/store";
 
 const USSD = ({ ussd_config }: { ussd_config: any }) => {
-  const [stage, setStage] = useState(0);
+  const [selectedBank, setSelectedBank] = useState("");
 
   const params = new URLSearchParams(window.location.search);
 
-  const { ussd_details }: { ussd_details: any } = useSelector(
+  const { ussd_details, isUssdLoading } = useSelector(
     (state: RootState) => state.payment
   );
 
@@ -57,31 +58,43 @@ const USSD = ({ ussd_config }: { ussd_config: any }) => {
             color="green-light"
             type="select"
             onChange={(e: any) => {
+              setSelectedBank(e?.label);
               retrieveUssdCode(e?.value);
             }}
+            placeholder="Select a Bank"
             // menuPlacement={'top'}
             style={{ zIndex: "10000", position: "relative" }}
             selectOption={formatSelectOption(ussd_details?.bank_list)}
           />
         </div>
 
-        <div className="ussd__payment-details">
-          <div className="ussd__payment-details--account-no">
-            <span>
-              <h5>{ussd_config?.ussd_string}</h5>
-            </span>
-
-            <Copy />
+        {isUssdLoading ? (
+          <div className="loader-container">
+            <figure className="spinner">
+              <img src={spinner} alt="" />
+            </figure>
           </div>
+        ) : ussd_details.length > 0 ? (
+          <div className="ussd__payment-details">
+            <div className="ussd__payment-details--account-no">
+              <span>
+                <h5>{ussd_config?.ussd_string}</h5>
+              </span>
 
-          <div className="ussd__payment-details--note">
-            <figure>{icons.note_info}</figure>
-            <p>
-              Input this code to finalize your transaction through the GTBank
-              737 offline payment method.
-            </p>
+              <Copy />
+            </div>
+
+            <div className="ussd__payment-details--note">
+              <figure>{icons.note_info}</figure>
+              <p>
+                Input this code to finalize your transaction through the{" "}
+                {selectedBank} offline payment method.
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
       </>
     </Container>
   );

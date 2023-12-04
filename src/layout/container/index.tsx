@@ -15,7 +15,7 @@ const Container = ({
   button = true,
   recipient,
   amount,
-  loading,
+  // loading,
   merchant,
   className = "",
   btnLabel = "",
@@ -43,7 +43,7 @@ const Container = ({
     }
   };
 
-  const { config, trx_status }: any = useSelector(
+  const { config, trx_status, loading }: any = useSelector(
     (state: RootState) => state.payment
   );
 

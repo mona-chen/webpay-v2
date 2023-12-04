@@ -1,4 +1,5 @@
 export type ConfigState = {
+  [x: string]: boolean;
   id?: number;
   email?: string;
   amount?: number;
