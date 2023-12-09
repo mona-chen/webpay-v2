@@ -136,7 +136,9 @@ const App = () => {
     if (
       trx_status === "success" ||
       trx_status === "paid" ||
-      trx_status === "successful"
+      trx_status === "successful" ||
+      config?.status === "paid" ||
+      config?.is_paid === 1
     ) {
       clearInterval(int);
       postMessage("onSuccess", config);
@@ -144,7 +146,7 @@ const App = () => {
     } else {
       postMessage("onLoad", config);
     }
-  }, [trx_status]);
+  }, [trx_status, config]);
 
   const setFullHeight = () => {
     const vh = window.innerHeight * 0.01;
