@@ -140,6 +140,7 @@ const App = () => {
     ) {
       clearInterval(int);
       postMessage("onSuccess", config);
+      callbackUrl && navigate(callbackUrl);
     } else {
       postMessage("onLoad", config);
     }

@@ -46,7 +46,6 @@ const Sidebar = ({ onSelect }: { onSelect: Function }) => {
   let prefferedGateway: any = config;
 
   useEffect(() => {
-    console.log(config);
     if (!loading && config && config?.trx_ref !== "undefined") {
       const page = document.querySelector(".page-layout");
 
