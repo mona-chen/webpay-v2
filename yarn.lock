@@ -1769,10 +1769,10 @@
     "schema-utils" "^3.0.0"
     "source-map" "^0.7.3"
 
-"@ravenpay/raven-bank-ui@^0.8.19":
-  "integrity" "sha512-MxOxdQJAVBzMSG3aAekRJhckF1UqMGH2T5kJ3DuB2URPxm7doOYAZpEEodnTWDPqdePZIg+ifnQKwiTqhwRtoA=="
-  "resolved" "https://registry.npmjs.org/@ravenpay/raven-bank-ui/-/raven-bank-ui-0.8.19.tgz"
-  "version" "0.8.19"
+"@ravenpay/raven-bank-ui@^0.8.21":
+  "integrity" "sha512-kmJ3DxOe/cGhguKugOtQMJgOuLzH0kgRbOOTrW7CAQTYbYRHvWAk5jWOvC4uySkiAqO+yeGy/nq02Wn+l75FNg=="
+  "resolved" "https://registry.npmjs.org/@ravenpay/raven-bank-ui/-/raven-bank-ui-0.8.21.tgz"
+  "version" "0.8.21"
   dependencies:
     "@mdx-js/react" "^2.3.0"
     "@types/react-currency-format" "^1.0.0"
