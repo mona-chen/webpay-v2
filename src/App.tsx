@@ -148,33 +148,33 @@ const App = () => {
     }
   }, [trx_status, config]);
 
-  const setFullHeight = () => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  };
+  // const setFullHeight = () => {
+  //   const vh = window.innerHeight * 0.01;
+  //   document.documentElement.style.setProperty("--vh", `${vh}px`);
+  // };
 
-  window.addEventListener("resize", setFullHeight);
-  setFullHeight();
+  // window.addEventListener("resize", setFullHeight);
+  // setFullHeight();
 
-  function setBottomPadding() {
-    const content: any = document.querySelector(".secured_by");
-    const fixedBottom: any = document.querySelector(".mobile-footer-actions");
-    var remainingSpace;
+  // function setBottomPadding() {
+  //   const content: any = document.querySelector(".secured_by");
+  //   const fixedBottom: any = document.querySelector(".mobile-footer-actions");
+  //   var remainingSpace;
 
-    if (fixedBottom && content) {
-      remainingSpace =
-        window.innerHeight - fixedBottom?.offsetHeight - content?.offsetHeight;
-    }
-    const minPadding = 100; // Minimum padding you want
+  //   if (fixedBottom && content) {
+  //     remainingSpace =
+  //       window.innerHeight - fixedBottom?.offsetHeight - content?.offsetHeight;
+  //   }
+  //   const minPadding = 100; // Minimum padding you want
 
-    if (content)
-      content.style.paddingBottom =
-        Math.max(minPadding, remainingSpace ?? 0) + "px";
-  }
+  //   if (content)
+  //     content.style.paddingBottom =
+  //       Math.max(minPadding, remainingSpace ?? 0) + "px";
+  // }
 
-  // Run the function initially and on window resize
-  setBottomPadding();
-  window.addEventListener("resize", setBottomPadding);
+  // // Run the function initially and on window resize
+  // setBottomPadding();
+  // window.addEventListener("resize", setBottomPadding);
 
   const navigate = (e: string | URL) => {
     window?.top ? window.top.location.replace(e) : window.location.replace(e);
