@@ -5,6 +5,9 @@
   .non-mobile {
     display: none;
   }
+  input:focus {
+    font-size: 16px !important;
+  }
   .page-layout {
     overflow: hidden;
   }
